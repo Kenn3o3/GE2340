@@ -16,19 +16,8 @@ def sample_responses(input_text):
     global end
     user_message = str(input_text).lower()
 
-
-
-
-
-
-
-    ###########################################################################################################################
-    if "-translate" in user_message.lower():
-            if "-translate" == user_message.split()[0]:
-                return (" ".join(user_message.split()[1:]) + " -> " +trans.translate(" ".join(user_message.split()[1:])).text)
-            else:
-                return ("Please put \"-translate\" in the beginning of the sentence for translation")
-
+###########################################################################
+#help   
     if user_message.lower() == ("help"):
         return """
         Hello! I am Kenny's bot 
@@ -37,6 +26,21 @@ def sample_responses(input_text):
             >translate |  >games   |  >study  |    
 
         """
+    if user_message.lower() == (">games"):
+        return """
+        =====
+        Type the following commands to play different games:
+        ======
+        !ttt | tic tac toe
+        !banana | a nim game about banana
+        ======
+        You can force-end a game anytime by responding "!end"
+
+        """ 
+    if user_message.lower() == ("!end"):
+        nim, ttt, rpg = 0,0,0
+###########################################################################
+#STUDY
     if user_message.lower() == (">study"):
         return """
         Please type what subjects do you want to study:
@@ -211,7 +215,8 @@ def sample_responses(input_text):
         
         Healed through A.I. | The Age of A.I.
         https://www.youtube.com/watch?v=V5aZjsWM2wo"""
-
+###########################################################################
+#translate
     if user_message.lower() == (">translate"):
         return """
         you can translate any language to English using this bot!!! (supported by gogletrans==4.0.0-rc1)
@@ -221,21 +226,11 @@ def sample_responses(input_text):
         https://im7.ezgif.com/tmp/ezgif-7-0c0d8bc0cd4a.gif
         
         """
-
-
-    if user_message.lower() == (">games"):
-        return """
-        =====
-        Type the following commands to play different games:
-        ======
-        !ttt | tic tac toe
-        !banana | a nim game about banana
-        !rpg | a role-playing game !!!
-        ======
-        You can force-end a game anytime by responding "!end"
-
-        """ 
-
+    if "-translate" in user_message.lower():
+            if "-translate" == user_message.split()[0]:
+                return (" ".join(user_message.split()[1:]) + " -> " +trans.translate(" ".join(user_message.split()[1:])).text)
+###########################################################################
+#ttt
     if user_message.lower() == ("!ttt"):
         ttt = 1
         return """
@@ -244,7 +239,8 @@ def sample_responses(input_text):
         please place your mark first:
         |1|2|3|
         |4|5|6|
-        |7|8|9|"""
+        |7|8|9|
+        """
     if ttt == 1:
         if user_message == ("1"):
             ttt += 9
@@ -376,7 +372,7 @@ def sample_responses(input_text):
         elif user_message == ("6"):
             ttt = 16
             return """
-            valid marks: 2,3,4,6,7,8,9
+            valid marks: 3,4,7,8,9
             |o|x| | 
             | |x|o|
             | | | |
@@ -503,17 +499,472 @@ def sample_responses(input_text):
 
             I won!!!
             """
-    
 
-    if user_message.lower() == ("!end"):
-        ttt = 0
-        return "games ended"
-    
+    if ttt == 13:
+        if user_message == ("1") or user_message == ("2") or user_message == ("3") or user_message == ("5") :
+            return """
+            please do not place your mark in used positions!!
+            """
+        elif user_message == ("4"):
+            ttt = 0
+            return """
+            -
+            |o|x|o| 
+            |o|x| |
+            | |x| |
 
+            I won!!!
+            """
+        elif user_message == ("6"):
+            ttt = 0
+            return """
+            -
+            |o|x|o| 
+            | |x|o|
+            | |x| |
 
-    if user_message.lower() in ("hi", "hello"):
-        return "Hello!"
-    
-    else:
-        return "I don't understand you"
+            I won!!!
+            """
+        elif user_message == ("7"):
+            ttt = 0
+            return """
+            -
+            |o|x|o| 
+            | |x| |
+            |o|x| |
 
+            I won!!!
+            """
+        elif user_message == ("8"):
+            ttt = 138
+            return """
+            valid marks: 6,7,9
+            |o|x|o| 
+            |x|x| |
+            | |o| |
+
+            Please place your mark
+            """
+        elif user_message == ("9"):
+            ttt = 13
+            return """
+            -
+            |o|x|o| 
+            | |x| |
+            | |x|o|
+
+            I won!!!
+            """
+    if ttt == 138:
+        if user_message == ("1") or user_message == ("2") or user_message == ("3") or user_message == ("4") or user_message == ("5") or user_message == ("8"):
+            return "invalid mark, please try again!"
+        if user_message == ("6"):
+            ttt = 0
+            return """
+            -
+            |o|x|o| 
+            |x|x|o|
+            | |o|x|
+
+            It is a tie!!!
+            """
+        elif user_message == ("7"):
+            ttt = 0
+            return """
+            -
+            |o|x|o| 
+            |x|x|x|
+            |o|o| |
+
+            I won!!!
+            """
+        elif user_message == ("9"):
+            ttt = 0
+            return """
+            -
+            |o|x|o| 
+            |x|x|x|
+            | |o|o|
+
+            I won!!!
+            """
+
+    if ttt == 14:
+        if user_message == ("1") or user_message == ("4") or user_message == ("5") or user_message == ("7") :
+            return """
+            please do not place your mark in used positions!!
+            """
+        elif user_message == ("2"):
+            ttt = 0
+            return """
+            -
+            |o|o|x| 
+            |o|x| |
+            |x| | |
+
+            I won!!!
+            """            
+        elif user_message == ("3"):
+            ttt = 143
+            return """
+            valid marks: 6,8,9
+            |o|x|o| 
+            |o|x| |
+            |x| | |
+
+            Please place your mark
+            """    
+        elif user_message == ("6"):
+            ttt = 0
+            return """
+            -
+            |o| |x| 
+            |o|x|o|
+            |x| | |
+
+            I won!!!
+            """    
+        elif user_message == ("8"):
+            ttt = 0
+            return """
+            -
+            |o| |x| 
+            |o|x| |
+            |x|o| |
+
+            I won!!!
+            """    
+        elif user_message == ("9"):
+            ttt = 0
+            return """
+            -
+            |o| |x| 
+            |o|x| |
+            |x| |o|
+
+            I won!!!
+            """   
+    if ttt == 143:
+        if user_message == ("1") or user_message == ("2") or user_message == ("3") or user_message == ("4") or user_message == ("5") or user_message == ("7") :
+            return """
+            please do not place your mark in used positions!!"""
+        if user_message == ("6"):
+            ttt = 0
+            return """
+            -
+            |o|x|o| 
+            |o|x|o|
+            |x|x| |
+
+            I won!!!
+            """  
+        if user_message == ("8"):
+            ttt = 0
+            return """
+            -
+            |o|x|o| 
+            |o|x|x|
+            |x|o| |
+
+            It is a tie!!!
+            """   
+        if user_message == ("9"):
+            ttt = 0
+            return """
+            -
+            |o|x|o| 
+            |o|x|x|
+            |x| |o|
+
+            It is a tie!!!
+            """                                                                                             
+                                   
+###########################################################################
+#nim
+    if user_message.lower() == ("!banana"):
+        nim = 100
+        return """
+        Banana Roulette!!!
+        ==================
+        in the beginning of the game, there are 18 bananas, players can take 1 to 3 bananas turn by turn,
+        🍌🍌🍌🍌🍌🍌🍌🍌🍌🍌🍌🍌🍌🍌🍌🍌🍌🍌
+        ==================
+        It's your turn now, how many 🍌 would you like to pick?
+        Please give a number from 1 to 3
+        """
+    if nim == 100:
+        if user_message == ("1"):
+            nim = 1
+            return """
+            It's my turn, I will pick 1
+            🍌🍌🍌🍌🍌🍌🍌🍌🍌🍌🍌🍌🍌🍌🍌🍌
+            how many 🍌 would you like to pick?
+            Please give a number from 1 to 3"""
+
+        elif user_message == ("2"):
+            nim = 2
+            return """
+            It's my turn, I will pick 3
+            🍌🍌🍌🍌🍌🍌🍌🍌🍌🍌🍌🍌🍌
+            how many 🍌 would you like to pick?
+            Please give a number from 1 to 3"""
+        elif user_message == ("3"):
+            nim = 3
+            return """
+            It's my turn, I will pick 2
+            🍌🍌🍌🍌🍌🍌🍌🍌🍌🍌🍌
+            how many 🍌 would you like to pick?
+            Please give a number from 1 to 3"""
+    if nim == 1:
+        if user_message == ("1"):
+            nim = 3
+            return """
+            It's my turn, I will pick 2
+            🍌🍌🍌🍌🍌🍌🍌🍌🍌🍌🍌
+            how many 🍌 would you like to pick?
+            Please give a number from 1 to 3"""
+        elif user_message == ("2"):
+            nim = 13
+            return """
+            It's my turn, I will pick 2
+            🍌🍌🍌🍌🍌🍌🍌🍌🍌🍌🍌🍌🍌
+            how many 🍌 would you like to pick?
+            Please give a number from 1 to 3"""
+        elif user_message == ("3"):
+            nim = 14
+            return """
+            It's my turn, I will pick 3
+            🍌🍌🍌🍌🍌🍌🍌🍌🍌🍌
+            how many 🍌 would you like to pick?
+            Please give a number from 1 to 3"""
+    if nim == 2:
+        if user_message == ("1"):
+            nim = 4
+            return """
+            It's my turn, I will pick 3
+            🍌🍌🍌🍌🍌🍌🍌🍌🍌
+            how many 🍌 would you like to pick?
+            Please give a number from 1 to 3"""
+        elif user_message == ("2"):
+            nim = 5
+            return """
+            It's my turn, I will pick 2
+            🍌🍌🍌🍌🍌🍌🍌🍌🍌
+            how many 🍌 would you like to pick?
+            Please give a number from 1 to 3"""
+        elif user_message == ("3"):
+            nim = 6
+            return """
+            It's my turn, I will pick 1
+            🍌🍌🍌🍌🍌🍌🍌🍌🍌
+            how many 🍌 would you like to pick?
+            Please give a number from 1 to 3"""
+    if nim == 3:
+        if user_message == ("1"):
+            nim = 4
+            return """
+            It's my turn, I will pick 3
+            🍌🍌🍌🍌🍌🍌🍌🍌🍌
+            how many 🍌 would you like to pick?
+            Please give a number from 1 to 3"""
+        elif user_message == ("2"):
+            nim = 5
+            return """
+            It's my turn, I will pick 2
+            🍌🍌🍌🍌🍌🍌🍌🍌🍌
+            how many 🍌 would you like to pick?
+            Please give a number from 1 to 3"""
+        elif user_message == ("3"):
+            nim = 6
+            return """
+            It's my turn, I will pick 1
+            🍌🍌🍌🍌🍌🍌🍌🍌🍌
+            how many 🍌 would you like to pick?
+            Please give a number from 1 to 3"""
+    if nim == 4:
+        if user_message == ("1"):
+            nim = 7
+            return """
+            It's my turn, I will pick 3
+            🍌🍌🍌🍌🍌
+            how many 🍌 would you like to pick?
+            Please give a number from 1 to 3"""
+        elif user_message == ("2"):
+            nim = 8
+            return """
+            It's my turn, I will pick 2
+            🍌🍌🍌🍌🍌
+            how many 🍌 would you like to pick?
+            Please give a number from 1 to 3"""
+        elif user_message == ("3"):
+            nim = 9
+            return """
+            It's my turn, I will pick 1
+            🍌🍌🍌🍌🍌
+            how many 🍌 would you like to pick?
+            Please give a number from 1 to 3"""
+    if nim == 5:
+        if user_message == ("1"):
+            nim = 7
+            return """
+            It's my turn, I will pick 3
+            🍌🍌🍌🍌🍌
+            how many 🍌 would you like to pick?
+            Please give a number from 1 to 3"""
+        elif user_message == ("2"):
+            nim = 8
+            return """
+            It's my turn, I will pick 2
+            🍌🍌🍌🍌🍌
+            how many 🍌 would you like to pick?
+            Please give a number from 1 to 3"""
+        elif user_message == ("3"):
+            nim = 9
+            return """
+            It's my turn, I will pick 1
+            🍌🍌🍌🍌🍌
+            how many 🍌 would you like to pick?
+            Please give a number from 1 to 3"""
+    if nim == 6:
+        if user_message == ("1"):
+            nim = 7
+            return """
+            It's my turn, I will pick 3
+            🍌🍌🍌🍌🍌
+            how many 🍌 would you like to pick?
+            Please give a number from 1 to 3"""
+        elif user_message == ("2"):
+            nim = 8
+            return """
+            It's my turn, I will pick 2
+            🍌🍌🍌🍌🍌
+            how many 🍌 would you like to pick?
+            Please give a number from 1 to 3"""
+        elif user_message == ("3"):
+            nim = 9
+            return """
+            It's my turn, I will pick 1
+            🍌🍌🍌🍌🍌
+            how many 🍌 would you like to pick?
+            Please give a number from 1 to 3"""
+    if nim == 7:
+        if user_message == ("1"):
+            nim = 0
+            return """
+            It's my turn, I will pick 3
+            🍌
+            I won"""
+        elif user_message == ("2"):
+            nim = 0
+            return """
+            It's my turn, I will pick 2
+            🍌
+            I won"""
+        elif user_message == ("3"):
+            nim = 12
+            return """
+            It's my turn, I will pick 1
+            🍌
+            I won"""
+    if nim == 8:
+        if user_message == ("1"):
+            nim = 0
+            return """
+            It's my turn, I will pick 3
+            🍌
+            I won"""
+        elif user_message == ("2"):
+            nim = 0
+            return """
+            It's my turn, I will pick 2
+            🍌
+            I won"""
+        elif user_message == ("3"):
+            nim = 12
+            return """
+            It's my turn, I will pick 1
+            🍌
+            I won"""
+    if nim == 9:
+        if user_message == ("1"):
+            nim = 0
+            return """
+            It's my turn, I will pick 3
+            🍌
+            I won"""
+        elif user_message == ("2"):
+            nim = 0
+            return """
+            It's my turn, I will pick 2
+            🍌
+            I won"""
+        elif user_message == ("3"):
+            nim = 12
+            return """
+            It's my turn, I will pick 1
+            🍌
+            I won"""
+    if nim == 13:
+        if user_message == ("1"):
+            nim = 4
+            return """
+            It's my turn, I will pick 3
+            🍌🍌🍌🍌🍌🍌🍌🍌🍌
+            how many 🍌 would you like to pick?
+            Please give a number from 1 to 3"""
+        elif user_message == ("2"):
+            nim = 5
+            return """
+            It's my turn, I will pick 2
+            🍌🍌🍌🍌🍌🍌🍌🍌🍌
+            how many 🍌 would you like to pick?
+            Please give a number from 1 to 3"""
+        elif user_message == ("3"):
+            nim = 6
+            return """
+            It's my turn, I will pick 1
+            🍌🍌🍌🍌🍌🍌🍌🍌🍌
+            how many 🍌 would you like to pick?
+            Please give a number from 1 to 3"""
+    if nim == 14:
+        if user_message == ("1"):
+            nim = 15
+            return """
+            It's my turn, I will pick 3
+            🍌🍌🍌🍌🍌🍌
+            how many 🍌 would you like to pick?
+            Please give a number from 1 to 3"""
+        elif user_message == ("2"):
+            nim = 7
+            return """
+            It's my turn, I will pick 3
+            🍌🍌🍌🍌🍌
+            how many 🍌 would you like to pick?
+            Please give a number from 1 to 3"""
+        elif user_message == ("3"):
+            nim = 8
+            return """
+            It's my turn, I will pick 2
+            🍌🍌🍌🍌🍌
+            how many 🍌 would you like to pick?
+            Please give a number from 1 to 3"""
+    if nim == 15:
+        if user_message == ("1"):
+            nim = 0
+            return """
+            🍌🍌
+            You can only choose one,
+            You won!!!"""
+        elif user_message == ("2"):
+            nim = 0
+            return """
+            It's my turn, I will pick 3
+            🍌
+            I won"""
+        elif user_message == ("3"):
+            nim = 0
+            return """
+            It's my turn, I will pick 2
+            🍌
+            I won"""
+###########################################################################
