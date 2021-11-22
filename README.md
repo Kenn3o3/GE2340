@@ -81,6 +81,8 @@ check your bot API token once it is created by using `/mybots` command.
 *   📖 **>study**: `maths`, `cantonese`, `english`, `computer science`
 *   📝 **>translate**: `-translate`
 
+Have fun!!!
+
 ## Acknowledgments
 
 * [federicocotogno/premium_telegram_bot](https://github.com/federicocotogno/premium_telegram_bot_2021)
